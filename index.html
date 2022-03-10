@@ -42,18 +42,18 @@
 	        <div class="col-md-6">
 	            <div class="thumbnail">
 
-						<img class="poster"  />
-						<div class="imageInfo">{{posterindex}}</div>
+						<img class="poster"v-on:click="{{posterClick(index)}}" v-bind:src="movie.posters[movie.posterindex]"/>
+						<div class="imageInfo">Poster{{movie.posterindex+1}}of {{movie.posters.length}}</div>
 
-						<p class="title">{{title}} ({{country}})</p>
-						<p class="score"><i class="fa fa-star" aria-hidden="true"></i> {{iscore}} </p>
-						<p class="runtime">Runtime: {{runtime}}</p>
-						<p class="released">Released: {{released}} | Rated: {{rating}}</p>
-						<p class="websites">Websites: <a>{{imdb}}</a> | <a>{{website}}</a></p>
+						<p class="title">{movie.{title}} ({{movie.country}})</p>
+						<p class="score"><i class="fa fa-star" aria-hidden="true"></i> {{movie.iscore}} </p>
+						<p class="runtime">Runtime: {{timeText(movie.runtime)}}</p>
+						<p class="released">Released: {{getMonthText(movie.released)}} | Rated: {{movie.rating}}</p>
+						<p class="websites">Websites: <a v-bind:href="movie.imdb">IMDB</a> | <a v-bind:href="movie.website">Official</a></p>
 
 			            <div class="social">
-			              <p class="likes"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{likes}}</p>
-			              <p class="dislikes"><i class="fa fa-thumbs-down" aria-hidden="true"></i> {{dislikes}}</p>
+			              <p class="likes" v-on:click="{{like(index)}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{movie.likes}}</p>
+			              <p class="dislikes" v-on:click="{{dislike(index)}}><i class="fa fa-thumbs-down" aria-hidden="true"></i> {movie.{dislikes}}</p>
 			            </div>
 	            </div>
 	        </div>
